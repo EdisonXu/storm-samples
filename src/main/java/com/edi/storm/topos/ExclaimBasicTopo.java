@@ -8,6 +8,7 @@ import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.utils.Utils;
 
 import com.edi.storm.bolts.ExclaimBasicBolt;
+import com.edi.storm.bolts.ExclaimRichBolt;
 import com.edi.storm.bolts.PrintBolt;
 import com.edi.storm.spouts.RandomSpout;
 
@@ -23,6 +24,7 @@ public class ExclaimBasicTopo {
 		
 		builder.setSpout("spout", new RandomSpout());
 		builder.setBolt("exclaim", new ExclaimBasicBolt(), 2).shuffleGrouping("spout");
+		//builder.setBolt("exclaim", new ExclaimRichBolt(), 2).shuffleGrouping("spout");
 		builder.setBolt("print", new PrintBolt(),3).shuffleGrouping("exclaim");
 
 		Config conf = new Config();

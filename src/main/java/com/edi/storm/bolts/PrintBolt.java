@@ -2,6 +2,8 @@ package com.edi.storm.bolts;
 
 import java.util.Map;
 
+import com.edi.storm.util.PrintHelper;
+
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
@@ -27,7 +29,7 @@ public class PrintBolt extends BaseBasicBolt {
 	@Override
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
 		String rec = tuple.getString(0);
-		System.err.println(String.format("Bolt[%d] String recieved: %s",this.indexId, rec));
+		PrintHelper.print(String.format("Bolt[%d] String recieved: %s",this.indexId, rec));
 	}
 
 	@Override
