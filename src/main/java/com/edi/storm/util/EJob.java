@@ -295,6 +295,7 @@ public class EJob {
                 createTempJarInner(out, fl[i], base + fl[i].getName());
             }
         } else {
+        	// filter MANIFEST created by M2E eclipse plugin
         	if(base.equalsIgnoreCase("META-INF/MANIFEST.MF")) 
         		return;
             out.putNextEntry(new JarEntry(base));
